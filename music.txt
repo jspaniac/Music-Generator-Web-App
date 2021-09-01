@@ -1,0 +1,11 @@
+measure::= pitch-w | half half
+half::= pitch-h | quarter quarter
+quarter::= pitch-q | pitch pitch
+pitch::=C | D# | F | F# | G | A# | C6
+chordmeasure::= chord-w | halfchord halfchord
+halfchord::= chord-h | chord-q chord-q
+chord::=Cmin | Cmin7 | Fdom7 | Gdom7
+bassdrum::= O..o | O... | O..o | OO..
+snare::= ..S. | S..s | .S.S
+crash::=...* | *...
+claps::=x..x | xx..x
