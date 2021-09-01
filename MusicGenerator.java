@@ -37,7 +37,6 @@ public class MusicGenerator {
 
     /**
     * Generates some random music and plays the result out loud. 
-    * Currently doesn't work in Ed :(
     */
     public void playOutLoud() {
         new Player().play(generate());
