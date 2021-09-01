@@ -1,6 +1,6 @@
 # Music-Generator-Web-App
 A [front end application](https://arxiv.org/abs/2010.04671) that uses a BNF music grammar to randomly generate and play music for users 
-(note that since this is an active assignment being used in the 14X series that GrammarSolver is provided in a pre-compiled form)
+(note that since this is an active assignment being used in the 14X series that GrammarSolver is provided in a pre-compiled form; additionally, this application was developed to work on an a platform being used in the 14X series rather than locally)
 # Spoofy
 Spoofy uses the CSE 143 [GrammarSolver](https://courses.cs.washington.edu/courses/cse143/21su/handouts/a4.pdf)
 assignment with the music.txt grammar to play randomly generated music right in your browser!
