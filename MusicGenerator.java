@@ -6,6 +6,7 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 
+// NOTE: This code is provided from a previous 14X TA
 // Generates random music using a music grammar located at GRAMMAR_LOCATION.
 public class MusicGenerator {
     private static final boolean RHYTHM = true;
