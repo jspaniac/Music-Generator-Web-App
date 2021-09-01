@@ -8,7 +8,7 @@ assignment with the music.txt grammar to play randomly generated music right in 
 To see the webpage, run the server in terminal/console:
 ```bash
 java MusicGeneratorServer.java
-``'
+```
 
 Once you load up the webpage, there are four buttons to choose from. You can hover your mouse over each to see what function they provide!
 After you've jammed out, head back to the ed workspace and in the console hit Ctrl-C to quit the app!
