@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ⚡>
+
+<head>
+    <meta charset="utf-8">
+    <title>Spoofy</title>
+    <link rel="canonical" href=".">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="description" content="Music Generator">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+    <script src="https://kit.fontawesome.com/e4099066cb.js" crossorigin="anonymous"></script>
+
+    <style amp-custom>
+      body {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-image: linear-gradient(#616161, #000000);
+        font-family: Verdana, Helvetica, sans-serif;;
+      }
+      span.title {
+        font-size: 140px; 
+        text-align:center; 
+        margin:auto;
+        color:SpringGreen; 
+      }
+      span.logo {
+        color:SpringGreen; 
+      }
+      span.buttons {
+        font-size: 50px; 
+        color: white; 
+        width: 100%;
+        text-align: center;
+        opacity: 100%;
+        vertical-align: bottom;
+      }
+      progress {
+        width: 95%;
+        height: 50px;
+        vertial-align: top;
+      }
+  </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript>
+        <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>
+    </noscript>
+</head>
+
+<body>
+      <span class="title">
+        <span class="logo">
+          <i class="fab fa-spotify"></i>
+        </span>
+        Spoofy
+      </span>
+      
+      <span class="buttons">
+        <span title="Upload and play saved.mid">
+          <i onClick="upload();" class="fas fa-cloud-upload-alt"></i>
+        </span>
+        
+        <span title="Generate a new saved.mid">
+          <i onClick="generate();" class="fas fa-sync-alt"></i>
+        </span>
+        
+        <span title="Play / pause">
+          <i id="playpause" onClick="play_pause();" class="fas fa-pause-circle"></i>
+        </span>
+
+        <span title="Stop">
+          <i onClick="MIDIjs.stop(); reset_play();" class="fas fa-stop-circle"></i>
+        </span>
+
+        <progress id="bar" max="100" value="0"></progress>
+      </span>
+</body>
+
+<script type="text/javascript">
+  var play = false;
+  var total_seconds = 0;
+  const bar = document.getElementById('bar');
+  const icon = document.getElementById('playpause');
+
+  function upload() {
+    const url = window.location.href + 'play';
+    MIDIjs.play(url);
+    MIDIjs.get_duration(url, function(seconds) { total_seconds = seconds;});
+    
+    bar.value = 0;
+    play = true;
+    icon.className = "fas fa-pause-circle";
+  }
+
+  function generate() {
+    const http = new XMLHttpRequest();
+    http.open("GET", window.location.href + "generate");
+    http.send();
+    //Wait for response
+    //Update something once we have a response
+  }
+
+  function play_pause() {
+    if (play) {
+      MIDIjs.pause();
+      icon.className = "fas fa-play-circle";
+    } else {
+      MIDIjs.resume();
+      icon.className = "fas fa-pause-circle";
+    }
+    play = !play
+  }
+
+  function reset_play() {
+    play = false;
+    play_pause();
+    bar.value = 0;
+  }
+
+  // Define a function to handle player events
+  function update_bar(ev) {
+      if (total_seconds !== 0) 
+        bar.value = (ev.time / total_seconds) * 100; // time in seconds, since start of playback
+  };
+
+  // Set the function as player callback
+  MIDIjs.player_callback = update_bar;
+</script>
+
+</html>
