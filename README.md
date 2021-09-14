@@ -27,3 +27,5 @@ three requests in the main method: '/', '/play', '/generate'. The first will sim
 found under index.html. The second will simply send the current .midi file to the webpage so that it can be played for the client.
 The third option simply generates a new music file, overwriting the previous one under midi/saved.mid. If you want to try to understand
 the code a bit better, see if you cant get the program to serve one of the other premade midi files!
+
+[Here's the link for the SIGCSE submission demonstrating the simplicity of developing similar web applications for other introductory courses](https://arxiv.org/abs/2010.04671)
